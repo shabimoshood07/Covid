@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Clearance</title>
+
+     <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- styles -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="covid-container">
+        <img src="img/download.png" alt="" class="covid left">
+        <img src="img/download.png" alt="" class="covid right">
+    </div>
+    
+    <section class="section-center">
+        <p class="alert">patient's details added successfully!!!!</p>
+    
+    <form class="input-form">
+        <div class="first-name form">
+            <label for="">first name:</label>
+            <input type="text" name="first-name" id="first-name">
+        </div>
+        <div class="last-name form">
+            <label for="">last name:</label>
+            <input type="text" name="last-name" id="last-name">
+        </div>
+        <div class="email form">
+             <label for="">Email address:</label>
+            <input type="email" name="email" id="email">
+         </div>
+        <div class="gender form">
+             <label for="">Gender:</label>
+            <select name="male,female" id="gender">
+                 <option value="Male,female">Male, Female</option>
+                <option value="male">male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="travel form checkbox ">
+            <input type="checkbox" name="travel"  id="travel">
+            <span for="checkbox">
+                Recently came into Nigeria within the last 14 days?</span> 
+        </div>
+                    
+        <div class="submit form">
+            <button type="submit" class="submit-btn">Submit</button>
+        </div>
+     </form>
+ 
+        <!-- table to list all records -->
+    <table class="list" id="output-tabe">
+        <thead>
+            <tr>
+                <th >Name</th>
+                <th>Email address</th>
+                <th>Gender</th>
+                <th >came to nigeria within the last 14 days?</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+            <tbody class="table-body">
+                <!-- <tr>
+                    <td class="output-name"> <span class="last-name">shabi</span> <span class="first-name">moshood</span>  </td>
+                    <td class="output-email">shabimoshood07@gamil.com</td>
+                    <td class="output-gender">Male</td>
+                    <td class="output-travel">No</td>
+                    <td><button type="button" class="edit-btn btn">Edit</button></td>
+                    <td><button type="button" class="delete-btn btn">Delete</button></td>
+                </tr> -->
+            </tbody>
+    </table>
+
+    </section>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
