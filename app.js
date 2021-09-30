@@ -29,15 +29,17 @@ form.addEventListener("submit", function(e){
     // console.log(emailInput);
     // console.log(genderInput);
 
-    if(travel.checked === true){
+    
+   
+    if( firstNameInput && lastNameInput && emailInput && genderInput!== "Male,female" && !editFlag){
+
+         if(travel.checked === true){
         travelled = "Yes";
         // console.log(travelled)
     }if(travel.checked === false){
         travelled = "No";
         // console.log(travelled)
     }
-    
-    if( firstNameInput && lastNameInput && emailInput && genderInput!== "Male,female" && !editFlag){
          const details = document.createElement("tr");
     details.classList.add("details");
     const attr = document.createAttribute("data-id");
@@ -58,11 +60,22 @@ form.addEventListener("submit", function(e){
             const deleteBtn = details.querySelector(".delete-btn");
             deleteBtn.addEventListener("click", deleteDetails)
         // /////////DELETE BUTTON//////////////////////
+        const travelOutput = details.querySelector(".output-travel");
             const editBtn = details.querySelector(".edit-btn");
             editBtn.addEventListener("click", editDetails)
             setToDefault();
+            travel.checked = false;
             
     }else if( firstNameInput && lastNameInput && emailInput && genderInput!== "Male,female" && editFlag){
+
+                    if(travel.checked === true){
+                travelled = "Yes";
+                // console.log(travelled)
+            }if(travel.checked === false){
+                travelled = "No";
+                // console.log(travelled)
+            }
+
             editFirstName.innerHTML =  firstNameInput ;
             editLastName.innerHTML = lastNameInput;
             editEmail.innerHTML = emailInput;
@@ -70,6 +83,8 @@ form.addEventListener("submit", function(e){
             editTravel.innerHTML = travelled;
             displyAlert("Record Updated", "good")
             setToDefault();
+            travel.checked = false;
+
 
     }else if( !firstNameInput || !lastNameInput || !emailInput || genderInput === "Male,female"){
         displyAlert("Enter all input", "bad");
@@ -96,6 +111,9 @@ function deleteDetails(e){
 
 // Edit details
 function editDetails(e){
+
+    // travelled = "No";
+
     editFlag = true;
     const editDetail = e.currentTarget.parentElement.parentElement;
 
@@ -110,8 +128,6 @@ function editDetails(e){
      editGender = e.currentTarget.parentElement.previousElementSibling.previousElementSibling;
 
      editTravel = e.currentTarget.parentElement.previousElementSibling;
-     editTravel.innerHTML = travelled;
-
        firstName.value =editFirstName.innerHTML;
         lastName.value = editLastName.innerHTML;
         email.value = editEmail.innerHTML;
@@ -119,20 +135,14 @@ function editDetails(e){
 
         submitBtn.innerHTML = "update";
 
+    if(editTravel.innerHTML === "Yes"){
+             travel.checked = true;
+             editTravel.innerHTML === "Yes";
+            } if(editTravel.innerHTML === "No"){
+                travel.checked = false;
+                editTravel.innerHTML === "No"; 
+    }
 
-    //  if(editTravel.innerHTML = "Yes"){
-    //      travel.checked = true;
-    //     }if(editTravel.innerHTML= "No"){
-    //         travel.checked = false;
-    //  }
-
-// console.log(editFirstName);
-// console.log(editLastName);
-// console.log(editEmail);
-// console.log(editGender);
-// console.log(editTravel);
-// console.log(editID);
-// console.log(editDetail);
 }
 
 // display alert
@@ -158,7 +168,7 @@ function setToDefault(){
 lastName.value="";
 email.value="";
 gender.value="Male,female";
-travel.checked = false;
+// travel.checked = false;
 submitBtn.innerHTML= "Submit"
 editID = "";
 editFlag = false;
